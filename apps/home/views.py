@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
+from .models import Contact
+from django.contrib import messages
 
 
 @login_required(login_url="/login/")
@@ -15,6 +17,23 @@ def index(request):
     context = {'segment': 'index'}
 
     html_template = loader.get_template('home/index.html')
+    return HttpResponse(html_template.render(context, request))
+
+
+
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('name')
+        message = request.POST.get('name')
+
+        new_contact = Contact(name=name,email=email,message=message)
+        new_contact.save()
+        messages.success(request,f"Message sent {name.split(' ')[0]} !")
+
+    context = {'segment': 'contact-us.html'}
+
+    html_template = loader.get_template('home/contact-us.html')
     return HttpResponse(html_template.render(context, request))
 
 
