@@ -37,7 +37,7 @@
 
               {% if not success %}
               
-                <form role="form" method="post" action="">
+                <form role="form" method="post" hx-post="{% url 'register' %}" hx-swap="outerHTML" hx-push-url="true" hx-target=".content" >
 
                   {% csrf_token %} 
 
@@ -80,7 +80,7 @@
               {% else %} 
 
                   <p class="mt-4 text-sm text-center">
-                    <a href="{% url 'login' %}" class="text-primary text-gradient font-weight-bold">Sign IN</a> 
+                    <a  href="{% url 'login' %}" class="text-primary text-gradient font-weight-bold">Sign IN</a> 
                   </p>
               
               {% endif %}
