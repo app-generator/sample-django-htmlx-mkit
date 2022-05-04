@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.3] 2022-04-05
+### Improvements
+
+- Added `HTMLX` support
+
 ## [1.0.2] 2021-01-19
 ### Improvements
 
